@@ -27,7 +27,7 @@ if(!file.exists(dataFile)){
 }
 
 df <- read.csv('./data/mesas_final_balotaje_2015.csv')
-prov <- read.csv('./data/provincias.csv')
+prov <- data.frame(id = c(1:24), provincia=c("CABA","Buenos Aires","Catamarca","Cordoba","Corrientes","Chaco","Chubut","Entre Rios", "Formosa","Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquen","Rio Negro","Salta","San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego"))
 colnames(df)[1] <- "provincia_id"
 df <- merge(prov, df, by.x = "id", by.y = "provincia_id")
 df$id <- NULL
@@ -180,3 +180,5 @@ En los gráficos se pueden observar cómo las distintas provincias están muy in
 Se suele decir que en las provincias/ciudades donde hay mucha inclinación hacia un candidato hay "voto comprado". Incluso si es una zona pobre del país se opina muchas veces que no es un voto "calificado". ¿Es viable afirmarlo sabiendo que en las provincias más acaudaladas hubo también una fuerte inclinación para con los gobiernos más neoliberales/derecha? ¿Si en Santiago del Estero hay voto comprado porque en las mesas hay 90% a un candidato populista, lo hay también en Córdoba donde hay un 90% a un candidato neoliberal?
 
 No es el objetivo del artículo sacar conclusiones sociologicas/políticas, sin dudas es tema de debate. Desde __OpenDataCordoba__ nos interesa demostrar como una política pública y abierta de datos puede fomentar el análisis y el involucramiento del ciudadano en la vida política del país.
+
+Link al repositorio con el código del análisis: [link](https://github.com/pdelboca/ballotage-2015)
