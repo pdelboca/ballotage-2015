@@ -57,7 +57,7 @@ ggplot(porcTemp,aes(x=value)) +
 
 Los datos obtenidos y analizados son los __Resultados provisionales de la segunda vuelta de las Elecciones Nacionales, 22 de noviembre 2015__ que se pueden acceder desde esta web [http://www.resultados.gob.ar/inicio.htm](http://www.resultados.gob.ar/inicio.htm)
 
-Los mismos pueden diferir de los datos que se ven escritos a mano en los telegramas y de los resultados definitivos, aunque las características estadísticas aquí analizadas se mantienen.
+Los mismos pueden diferir de los datos que se ven escritos a mano en los telegramas por errores típicos de carga que serán corregidos durante el escrutinio definitivo.No obstante las características estadísticas aquí analizadas se mantienen.
 
 ### Introducción
 Este post nace de mi curiosidad innata y de un comentario que se dió luego del Ballotage 2015:
@@ -86,7 +86,7 @@ cbaFPV <- df[df$provincia == "Cordoba", c("porc_fpv")]
 ggplot(as.data.frame(cbaFPV), aes(x=cbaFPV)) + 
   geom_histogram(binwidth=1,  fill="blue", alpha=0.7)+
   geom_vline(xintercept=70) + 
-  ggtitle("Histograma de Porcentaje de Votos \n en cada mesa para el partido Cambiemos\n en Córdoba") +
+  ggtitle("Histograma de Porcentaje de Votos \n en cada mesa para el partido FPV\n en Córdoba") +
   xlab("Porcentaje obtenido en la mesa.")
 ```
 
