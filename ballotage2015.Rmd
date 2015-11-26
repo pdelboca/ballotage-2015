@@ -25,11 +25,24 @@ if(!file.exists(dataFile)){
   download.file(fileURL, destfile=dataFile, method="curl")
 }
 
+# Load Data
 df <- read.csv('./data/mesas_final_balotaje_2015.csv')
 prov <- data.frame(id = c(1:24), provincia=c("CABA","Buenos Aires","Catamarca","Cordoba","Corrientes","Chaco","Chubut","Entre Rios", "Formosa","Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquen","Rio Negro","Salta","San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tucuman", "Tierra del Fuego"))
 colnames(df)[1] <- "provincia_id"
 df <- merge(prov, df, by.x = "id", by.y = "provincia_id")
 df$id <- NULL
+
+# Limpiar la URL de los distritos con más de 5 Chars
+# Quick and dirty solution: FIXME
+#for(i in 1:nrow(df)){
+#  if (nchar(as.character(df$circuito))[i] == 5){
+#    df[i, "url"] <- gsub("_", "", df[i, "url"])
+#  }
+#  print(i)
+#}
+df$circuito <- as.character(df$circuito)
+df$url <- as.character(df$url)
+df[nchar(df$circuito) == 5, "url"] <- gsub("_","", df[nchar(df$circuito) == 5, "url"])
 ```
 
 ```{r}
