@@ -53,6 +53,11 @@ ggplot(porcTemp,aes(x=value)) +
   ylab("Cantidad de Mesas")
 }
 ```
+### Aclaración antes de empezar:
+
+Los datos obtenidos y analizados son los __Resultados provisionales de la segunda vuelta de las Elecciones Nacionales, 22 de noviembre 2015__ que se pueden acceder desde esta web [http://www.resultados.gob.ar/inicio.htm](http://www.resultados.gob.ar/inicio.htm)
+
+Los mismos pueden diferir de los datos que se ven escritos a mano en los telegramas y de los resultados definitivos, aunque las características estadísticas aquí analizadas se mantienen.
 
 ### Introducción
 Este post nace de mi curiosidad innata y de un comentario que se dió luego del Ballotage 2015:
