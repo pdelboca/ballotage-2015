@@ -5,7 +5,6 @@ date: "November 25, 2015"
 output: html_document
 ---
 ```{r, echo=FALSE, message=FALSE, warning = FALSE}
-library(pander)
 library(ggplot2)
 theme_set(theme_grey()) # set default theme for plots
 library(dplyr)
@@ -152,25 +151,32 @@ provincias <- c("Tucuman", "CABA", "Cordoba", "Buenos Aires", "Santiago del Este
 graficaHistogramaComparativo(provincias)
 ```
 
-```{r}
+
+## Algunos datos extras
+¿Curioso acerca de las mesas con 100% de votos?
+```{r, results='markup'}
+dfTemp <- df[df$porc_cambiemos == 100 | df$porc_fpv == 100, ] %>%
+  mutate(telegrama = paste0("[Link al Telegrama](", url,")"))
+
+knitr::kable(dfTemp[,c("provincia","mesa","votantes","FPV","CAMBIEMOS", "telegrama")])
+```
+
+#### Mesas donde CAMBIEMOS sacó más votos:
+```{r, results='markup'}
 #### Mesas donde CAMBIEMOS sacó más votos
-columnas <- c("provincia", "FPV", "CAMBIEMOS", "electores", "url")
-head(df[order(df$CAMBIEMOS, decreasing = TRUE), columnas], 10)
+dfTemp <- head(df[order(df$CAMBIEMOS, decreasing = TRUE), ], 10) %>%
+  mutate(telegrama = paste0("[Link al Telegrama](", url,")"))
+
+knitr::kable(dfTemp[,c("provincia","mesa","votantes","FPV","CAMBIEMOS", "telegrama")])
 ```
 
-```{r}
-#### Mesas donde CAMBIEMOS sacó el 100% de los votos
-df[df$porc_cambiemos == 100, columnas]
-```
-
-```{r}
+#### Mesas donde el FPV sacó más votos:
+```{r,results='markup'}
 #### Mesas donde el FPV sacó más votos
-head(df[order(df$FPV, decreasing = TRUE), columnas], 10)
-```
+dfTemp <- head(df[order(df$FPV, decreasing = TRUE), ], 10)%>%
+  mutate(telegrama = paste0("[Link al Telegrama](", url,")"))
 
-```{r}
-#### Mesas donde FPV sacó el 100% de los votos
-df[df$porc_fpv == 100, columnas]
+knitr::kable(dfTemp[,c("provincia","mesa","votantes","FPV","CAMBIEMOS", "telegrama")])
 ```
 
 ## Conclusión
