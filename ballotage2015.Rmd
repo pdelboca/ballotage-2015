@@ -81,7 +81,7 @@ cbaFPV <- df[df$provincia == "Cordoba", c("porc_fpv")]
 ggplot(as.data.frame(cbaFPV), aes(x=cbaFPV)) + 
   geom_histogram(binwidth=1,  fill="blue", alpha=0.7)+
   geom_vline(xintercept=70) + 
-  ggtitle("Histograma de Porcentaje de Votos \n en cada mesa para el partido Cambiemos\n en Córdoba") +
+  ggtitle("Histograma de Porcentaje de Votos \n en cada mesa para el partido FPV\n en Córdoba") +
   xlab("Porcentaje obtenido en la mesa.")
 ```
 
